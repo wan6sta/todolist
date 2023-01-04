@@ -2,6 +2,7 @@ import cls from './AddNewTodo.module.css'
 import AddIcon from '@mui/icons-material/Add'
 import { Fab, Paper, TextField } from '@mui/material'
 import { ChangeEvent, useState } from 'react'
+import RemoveIcon from '@mui/icons-material/Remove'
 
 export const AddNewTodo = () => {
   const [showInput, setShowInput] = useState(false)
@@ -9,6 +10,13 @@ export const AddNewTodo = () => {
   const [error, setError] = useState('')
 
   const showHandler = () => {
+    if (showInput) {
+      setTitle('')
+      error && setError('')
+      setShowInput(false)
+      return
+    }
+
     setShowInput(true)
   }
 
@@ -36,7 +44,7 @@ export const AddNewTodo = () => {
   return (
     <div className={cls.AddNewTodo}>
       <Fab onClick={showHandler} color='primary' aria-label='add'>
-        <AddIcon />
+        {showInput ? <RemoveIcon /> : <AddIcon />}
       </Fab>
 
       {showInput && (

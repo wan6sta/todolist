@@ -1,5 +1,5 @@
 .AddNewTodo {
-    @apply absolute left-10 bottom-10 flex items-center gap-4 z-20;
+    @apply fixed left-10 bottom-10 flex items-center gap-4 z-20;
 }
 
 .paper {
