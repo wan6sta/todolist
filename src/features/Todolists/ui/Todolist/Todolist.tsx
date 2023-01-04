@@ -2,7 +2,7 @@ import cls from './Todolist.module.css'
 import { FC } from 'react'
 import { EditableSpan } from 'widgets/EditableSpan'
 import { ErrorAlert } from 'widgets/ErrorAlert'
-import { AddNewTask, Task, useGetTasksQuery } from 'features/Tasks'
+import { AddNewTask, FilterTask, Task, useGetTasksQuery } from 'features/Tasks'
 import { Paper } from '@mui/material'
 
 interface Props {
@@ -25,6 +25,7 @@ export const Todolist: FC<Props> = props => {
 
         <Paper className={cls.paper}>
           <div className={cls.tasks}>{tasks}</div>
+          <FilterTask />
         </Paper>
       </div>
 
