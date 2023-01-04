@@ -1,8 +1,12 @@
 .Todolist {
-    @apply flex flex-col gap-4;
+    @apply flex flex-col gap-6 items-center;
 }
 
-.todo {
+.content {
+    @apply flex-col flex gap-4;
+}
+
+.paper {
     @apply w-80 flex flex-col items-center rounded-sm px-5 pb-5;
 }
 

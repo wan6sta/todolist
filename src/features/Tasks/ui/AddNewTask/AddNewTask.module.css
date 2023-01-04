@@ -1,0 +1,7 @@
+.AddNewTask {
+    @apply flex items-center justify-between w-[100%] gap-2;
+}
+
+.AddNewTask > div {
+    @apply w-[100%];
+}
