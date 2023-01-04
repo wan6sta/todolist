@@ -1,0 +1,11 @@
+.PageLoader {
+    @apply absolute top-0 w-[100%];
+}
+
+.PageLoader > span {
+    @apply bg-blue-500;
+}
+
+.PageLoader > span > span {
+    @apply bg-blue-200;
+}
