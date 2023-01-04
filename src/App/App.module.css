@@ -1,0 +1,3 @@
+.App {
+    @apply min-h-[100vh] bg-gray-900;
+}
