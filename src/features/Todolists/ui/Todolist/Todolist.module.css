@@ -2,6 +2,10 @@
     @apply flex flex-col gap-6 items-center;
 }
 
+.title {
+    @apply flex gap-2 items-center;
+}
+
 .content {
     @apply flex-col flex gap-4;
 }

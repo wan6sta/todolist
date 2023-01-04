@@ -4,6 +4,7 @@ import { EditableSpan } from 'widgets/EditableSpan'
 import { ErrorAlert } from 'widgets/ErrorAlert'
 import { AddNewTask, FilterTask, Task, useGetTasksQuery } from 'features/Tasks'
 import { Paper } from '@mui/material'
+import { DeleteTodolist } from '../DeleteTodolist/DeleteTodolist'
 
 interface Props {
   todoId: string
@@ -18,11 +19,13 @@ export const Todolist: FC<Props> = props => {
 
   return (
     <div className={cls.Todolist}>
-      <EditableSpan isTodolistTitle title={title} />
+      <div className={cls.title}>
+        <EditableSpan isTodolistTitle title={title} />
+        <DeleteTodolist />
+      </div>
 
       <div className={cls.content}>
         <AddNewTask />
-
         <Paper className={cls.paper}>
           <div className={cls.tasks}>{tasks}</div>
           <FilterTask />
