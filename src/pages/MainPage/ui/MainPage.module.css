@@ -1,0 +1,7 @@
+.MainPage {
+    @apply flex flex-wrap flex-col items-center justify-center grow;
+}
+
+.todolists {
+    @apply flex gap-10 flex-wrap w-[100%] justify-center;
+}

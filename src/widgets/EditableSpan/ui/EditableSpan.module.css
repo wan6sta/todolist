@@ -1,0 +1,19 @@
+.EditableSpan {
+    @apply flex items-center justify-center w-[100%] h-10 relative;
+}
+
+.EditableSpan > span {
+    @apply cursor-pointer select-none;
+}
+
+.todoTitle {
+    @apply text-2xl;
+}
+
+.inputWrap {
+    @apply w-[100%];
+}
+
+.error {
+    @apply text-[12px] absolute bottom-[-18px] left-0 text-red-500;
+}

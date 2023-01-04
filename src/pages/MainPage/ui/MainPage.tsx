@@ -10,9 +10,11 @@ export const MainPage = () => {
     <div className={cls.MainPage}>
       <PageLoader isLoading={isLoading} />
 
-      {todolists.map(todo => (
-        <Todolist key={todo.id} todoId={todo.id} title={todo.title} />
-      ))}
+      <div className={cls.todolists}>
+        {todolists.map(todo => (
+          <Todolist key={todo.id} todoId={todo.id} title={todo.title} />
+        ))}
+      </div>
 
       <ErrorAlert errorMessage={error} />
     </div>

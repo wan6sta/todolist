@@ -1,0 +1,3 @@
+.Task {
+    @apply flex justify-between border-t-2;
+}

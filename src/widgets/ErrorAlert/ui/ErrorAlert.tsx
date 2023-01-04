@@ -17,7 +17,7 @@ export const ErrorAlert: FC<Props> = ({ errorMessage }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'dark'
+      theme: 'colored'
     })
   }
 
@@ -36,7 +36,7 @@ export const ErrorAlert: FC<Props> = ({ errorMessage }) => {
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      theme='dark'
+      theme='colored'
     />
   )
 }

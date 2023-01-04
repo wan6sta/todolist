@@ -1,3 +1,3 @@
 .App {
-    @apply min-h-[100vh] bg-gray-900;
+    @apply min-h-[100vh] text-lg p-5 flex grow;
 }
