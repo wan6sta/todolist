@@ -5,6 +5,7 @@ import { ErrorAlert } from 'widgets/ErrorAlert'
 import { AddNewTask, FilterTask, Task, useGetTasksQuery } from 'features/Tasks'
 import { Paper } from '@mui/material'
 import { DeleteTodolist } from '../DeleteTodolist/DeleteTodolist'
+import { AddNewTodo } from '../AddNewTodo/AddNewTodo'
 
 interface Props {
   todoId: string
@@ -32,6 +33,7 @@ export const Todolist: FC<Props> = props => {
         </Paper>
       </div>
 
+      <AddNewTodo />
       <ErrorAlert errorMessage={error} />
     </div>
   )
