@@ -4,3 +4,9 @@ export interface Todolist {
   addedDate: string
   order: number
 }
+
+export interface DefaultResponse<T = {}> {
+  resultCode: number
+  messages: string[]
+  data: T
+}

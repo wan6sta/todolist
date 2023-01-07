@@ -1,10 +1,10 @@
 import cls from './MainPage.module.css'
-import { Todolist, useGetTodoQuery } from 'features/Todolists'
+import { AddNewTodo, Todolist, useGetTodosQuery } from 'features/Todolists'
 import { PageLoader } from 'widgets/PageLoader'
 import { ErrorAlert } from 'widgets/ErrorAlert'
 
 export const MainPage = () => {
-  const { data: todolists = [], isLoading, error } = useGetTodoQuery()
+  const { data: todolists = [], isLoading, error } = useGetTodosQuery()
 
   return (
     <div className={cls.MainPage}>
@@ -16,6 +16,7 @@ export const MainPage = () => {
         ))}
       </div>
 
+      <AddNewTodo />
       <ErrorAlert errorMessage={error} />
     </div>
   )

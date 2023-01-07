@@ -1,22 +1,20 @@
 import cls from './AddNewTodo.module.css'
 import AddIcon from '@mui/icons-material/Add'
 import { Fab, Paper, TextField } from '@mui/material'
-import { ChangeEvent, useState } from 'react'
-import RemoveIcon from '@mui/icons-material/Remove'
+import { ChangeEvent, KeyboardEvent, useState } from 'react'
+import { useAddNewTodoMutation } from '../../api/todolistsApi'
+import { PageLoader } from 'widgets/PageLoader'
+import { ErrorAlert } from 'widgets/ErrorAlert'
 
 export const AddNewTodo = () => {
   const [showInput, setShowInput] = useState(false)
   const [title, setTitle] = useState('')
   const [error, setError] = useState('')
 
-  const showHandler = () => {
-    if (showInput) {
-      setTitle('')
-      error && setError('')
-      setShowInput(false)
-      return
-    }
+  const [addNewTodo, { error: addNewTodoError, isLoading }] =
+    useAddNewTodoMutation()
 
+  const showHandler = () => {
     setShowInput(true)
   }
 
@@ -31,8 +29,15 @@ export const AddNewTodo = () => {
       return
     }
 
+    addNewTodo(title)
     setShowInput(false)
     setTitle('')
+  }
+
+  const onEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      hideHandler()
+    }
   }
 
   const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -43,13 +48,16 @@ export const AddNewTodo = () => {
 
   return (
     <div className={cls.AddNewTodo}>
+      <PageLoader isLoading={isLoading} />
+
       <Fab onClick={showHandler} color='primary' aria-label='add'>
-        {showInput ? <RemoveIcon /> : <AddIcon />}
+        <AddIcon />
       </Fab>
 
       {showInput && (
         <Paper className={cls.paper}>
           <TextField
+            onKeyDown={onEnterHandler}
             autoFocus
             onBlur={hideHandler}
             value={title}
@@ -61,6 +69,8 @@ export const AddNewTodo = () => {
           <span className={cls.error}>{error}</span>
         </Paper>
       )}
+
+      <ErrorAlert errorMessage={addNewTodoError} />
     </div>
   )
 }
