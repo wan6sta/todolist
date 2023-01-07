@@ -1,10 +1,10 @@
 import cls from './Todolist.module.css'
 import { FC } from 'react'
-import { EditableSpan } from 'widgets/EditableSpan'
 import { ErrorAlert } from 'widgets/ErrorAlert'
 import { AddNewTask, FilterTask, Task, useGetTasksQuery } from 'features/Tasks'
 import { Paper } from '@mui/material'
 import { DeleteTodo } from '../DeleteTodo/DeleteTodo'
+import { ChangeTitleTodo } from '../ChangeTitleTodo/ChangeTitleTodo'
 
 interface Props {
   todoId: string
@@ -20,7 +20,7 @@ export const Todolist: FC<Props> = props => {
   return (
     <div className={cls.Todolist}>
       <div className={cls.title}>
-        <EditableSpan isTodolistTitle title={title} />
+        <ChangeTitleTodo todoId={todoId} todoTitle={title} />
         <DeleteTodo todoId={todoId} />
       </div>
 

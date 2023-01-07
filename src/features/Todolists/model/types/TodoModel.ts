@@ -10,3 +10,8 @@ export interface DefaultResponse<T = {}> {
   messages: string[]
   data: T
 }
+
+export interface ChangeTodoTitleArgs {
+  todoId: string
+  newTitle: string
+}

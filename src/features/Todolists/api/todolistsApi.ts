@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { BASE_URL } from 'shared/assets/constants/BASE_URL'
-import { DefaultResponse, Todolist } from '../model/types/TodoModel'
+import {
+  ChangeTodoTitleArgs,
+  DefaultResponse,
+  Todolist
+} from '../model/types/TodoModel'
 
 export const todolistsApi = createApi({
   reducerPath: 'todoApi',
@@ -41,6 +45,16 @@ export const todolistsApi = createApi({
       invalidatesTags: (result, error, todoId) => [
         { type: 'Todolists', todoId }
       ]
+    }),
+    changeTodoTitle: build.mutation<DefaultResponse, ChangeTodoTitleArgs>({
+      query: args => ({
+        url: `/todo-lists/${args.todoId}`,
+        method: 'PUT',
+        body: { title: args.newTitle }
+      }),
+      invalidatesTags: (result, error, { todoId }) => [
+        { type: 'Todolists', todoId }
+      ]
     })
   })
 })
@@ -48,5 +62,6 @@ export const todolistsApi = createApi({
 export const {
   useGetTodosQuery,
   useAddNewTodoMutation,
-  useDeleteTodoMutation
+  useDeleteTodoMutation,
+  useChangeTodoTitleMutation
 } = todolistsApi

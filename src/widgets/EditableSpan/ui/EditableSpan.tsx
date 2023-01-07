@@ -1,15 +1,16 @@
 import cls from './EditableSpan.module.css'
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
 import { TextField } from '@mui/material'
 import { cn } from 'shared/lib/cn'
 
 interface Props {
   title: string
   isTodolistTitle?: boolean
+  callback?: (title: string) => void
 }
 
 export const EditableSpan: FC<Props> = props => {
-  const { title, isTodolistTitle } = props
+  const { title, isTodolistTitle, callback } = props
   const [showInput, setShowInput] = useState(false)
   const [inputValue, setInputValue] = useState(title)
   const [error, setError] = useState('')
@@ -31,7 +32,14 @@ export const EditableSpan: FC<Props> = props => {
       return
     }
 
+    callback && callback(inputValue)
     setShowInput(false)
+  }
+
+  const onEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      onBlurHandler()
+    }
   }
 
   const onDoubleClickHandler = () => {
@@ -47,6 +55,7 @@ export const EditableSpan: FC<Props> = props => {
       {showInput ? (
         <>
           <TextField
+            onKeyDown={onEnterHandler}
             autoFocus={true}
             value={inputValue}
             onChange={changeInputValue}
