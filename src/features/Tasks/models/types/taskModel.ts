@@ -6,9 +6,14 @@ export interface TaskModel {
   order: number
   priority: number
   startDate: string
-  status: number
+  status: TaskStatus
   title: string
   todoListId: string
+}
+
+export enum TaskStatus {
+  'active',
+  'completed'
 }
 
 export interface TasksResponse<T = {}> {
