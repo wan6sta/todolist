@@ -29,7 +29,7 @@ export const AddNewTodo = () => {
       return
     }
 
-    addNewTodo(title)
+    addNewTodo(title).unwrap()
     setShowInput(false)
     setTitle('')
   }

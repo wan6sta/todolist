@@ -25,7 +25,7 @@ export const Todolist: FC<Props> = props => {
       </div>
 
       <div className={cls.content}>
-        <AddNewTask />
+        <AddNewTask todoId={todoId} />
         <Paper className={cls.paper}>
           <div className={cls.tasks}>{tasks}</div>
           <FilterTask />

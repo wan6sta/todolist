@@ -1,4 +1,4 @@
-export type TaskModel = {
+export interface TaskModel {
   addedDate: string
   deadline: string
   description: string
@@ -11,8 +11,13 @@ export type TaskModel = {
   todoListId: string
 }
 
-export type TasksResponse<T> = {
+export interface TasksResponse<T> {
   error: string
   items: T
   totalCount: number
+}
+
+export interface AddNewTask {
+  title: string
+  todoId: string
 }

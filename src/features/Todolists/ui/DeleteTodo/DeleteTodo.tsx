@@ -14,7 +14,7 @@ export const DeleteTodo: FC<Props> = ({ todoId }) => {
   const [deleteTodo, { error, isLoading }] = useDeleteTodoMutation()
 
   const deleteTodoHandler = () => {
-    deleteTodo(todoId)
+    deleteTodo(todoId).unwrap()
   }
 
   return (

@@ -1,10 +1,9 @@
 import cls from './TextField.module.css'
-import { FC, InputHTMLAttributes } from 'react'
+import { FC } from 'react'
+import { TextFieldProps } from '@mui/material'
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {}
-
-export const TextField: FC<Props> = props => {
+export const TextField: FC<TextFieldProps> = props => {
   const { ...restProps } = props
 
-  return <input className={cls.TextField} {...restProps} />
+  return <TextField className={cls.TextField} {...restProps} />
 }
