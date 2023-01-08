@@ -3,7 +3,7 @@ import { BASE_URL } from 'shared/assets/constants/BASE_URL'
 import {
   ChangeTodoTitleArgs,
   DefaultResponse,
-  Todolist
+  TodolistModel
 } from '../model/types/TodoModel'
 
 export const todolistsApi = createApi({
@@ -14,7 +14,7 @@ export const todolistsApi = createApi({
     credentials: 'include'
   }),
   endpoints: build => ({
-    getTodos: build.query<Todolist[], void>({
+    getTodos: build.query<TodolistModel[], void>({
       query: () => ({
         url: '/todo-lists'
       }),
@@ -29,7 +29,10 @@ export const todolistsApi = createApi({
             ]
           : [{ type: 'Todolists', id: 'LIST' }]
     }),
-    addNewTodo: build.mutation<DefaultResponse<{ item: Todolist }>, string>({
+    addNewTodo: build.mutation<
+      DefaultResponse<{ item: TodolistModel }>,
+      string
+    >({
       query: title => ({
         url: '/todo-lists',
         method: 'POST',

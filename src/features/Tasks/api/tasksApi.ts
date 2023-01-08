@@ -1,6 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { BASE_URL } from 'shared/assets/constants/BASE_URL'
-import { AddNewTask, TaskModel, TasksResponse } from '../models/types/taskModel'
+import {
+  AddNewTask,
+  ChangeTask,
+  DeleteTask,
+  TaskModel,
+  TasksResponse
+} from '../models/types/taskModel'
 
 export const tasksApi = createApi({
   reducerPath: 'tasksApi',
@@ -22,7 +28,7 @@ export const tasksApi = createApi({
             ]
           : [{ type: 'Tasks', id: 'LIST' }]
     }),
-    addNewTask: build.mutation<any, AddNewTask>({
+    addNewTask: build.mutation<TasksResponse<TaskModel>, AddNewTask>({
       query: args => ({
         url: `/todo-lists/${args.todoId}/tasks`,
         method: 'POST',
@@ -31,8 +37,31 @@ export const tasksApi = createApi({
       invalidatesTags: (result, error, { todoId }) => [
         { type: 'Tasks', todoId }
       ]
+    }),
+    deleteTask: build.mutation<TasksResponse, DeleteTask>({
+      query: args => ({
+        url: `/todo-lists/${args.todoId}/tasks/${args.taskId}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: (result, error, { taskId }) => [
+        { type: 'Tasks', taskId }
+      ]
+    }),
+    changeTask: build.mutation<TasksResponse<TaskModel>, ChangeTask>({
+      query: args => ({
+        url: `/todo-lists/${args.todoId}/tasks/${args.taskId}`,
+        method: 'PUT',
+        body: args.newTask
+      }),
+      invalidatesTags: (result, error, { taskId }) => [
+        { type: 'Tasks', taskId }
+      ]
     })
   })
 })
 
-export const { useGetTasksQuery, useAddNewTaskMutation } = tasksApi
+export const {
+  useGetTasksQuery,
+  useAddNewTaskMutation,
+  useDeleteTaskMutation
+} = tasksApi

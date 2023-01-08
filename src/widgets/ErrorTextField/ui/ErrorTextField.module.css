@@ -1,0 +1,11 @@
+.ErrorTextField {
+    @apply relative;
+}
+
+.ErrorTextField > div > div {
+    @apply w-[100%];
+}
+
+.error {
+    @apply text-[12px] absolute bottom-[-24px] left-0 text-red-500;
+}

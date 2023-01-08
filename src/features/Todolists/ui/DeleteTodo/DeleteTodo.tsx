@@ -14,6 +14,8 @@ export const DeleteTodo: FC<Props> = ({ todoId }) => {
   const [deleteTodo, { error, isLoading }] = useDeleteTodoMutation()
 
   const deleteTodoHandler = () => {
+    if (isLoading) return
+
     deleteTodo(todoId).unwrap()
   }
 
@@ -21,7 +23,11 @@ export const DeleteTodo: FC<Props> = ({ todoId }) => {
     <div className={cls.DeleteTodolist}>
       <PageLoader isLoading={isLoading} />
 
-      <IconButton onClick={deleteTodoHandler} aria-label='delete'>
+      <IconButton
+        disabled={isLoading}
+        onClick={deleteTodoHandler}
+        aria-label='delete'
+      >
         <DeleteOutlineIcon />
       </IconButton>
 

@@ -2,8 +2,8 @@ import cls from './Task.module.css'
 import { FC } from 'react'
 import { TaskModel } from '../../models/types/taskModel'
 import { EditableSpan } from 'widgets/EditableSpan'
-import { Checkbox, IconButton } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { Checkbox } from '@mui/material'
+import { DeleteTask } from '../DeleteTask/DeleteTask'
 
 interface Props {
   task: TaskModel
@@ -15,10 +15,8 @@ export const Task: FC<Props> = props => {
   return (
     <div className={cls.Task}>
       <Checkbox />
-      <EditableSpan title={task.title} />
-      <IconButton aria-label='delete'>
-        <DeleteIcon />
-      </IconButton>
+      <EditableSpan title={task.title} callback={() => {}} />
+      <DeleteTask taskId={task.id} todoId={task.todoListId} />
     </div>
   )
 }

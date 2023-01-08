@@ -1,4 +1,4 @@
-export interface Todolist {
+export interface TodolistModel {
   id: string
   title: string
   addedDate: string

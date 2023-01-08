@@ -13,6 +13,8 @@ export const ChangeTitleTodo: FC<Props> = ({ todoTitle, todoId }) => {
   const [changeTitle, { error, isLoading }] = useChangeTodoTitleMutation()
 
   const changeTitleHandler = (newTitle: string) => {
+    if (isLoading) return
+
     changeTitle({ todoId, newTitle }).unwrap()
   }
 

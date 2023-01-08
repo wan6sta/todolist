@@ -1,11 +1,3 @@
 .AddNewTodo {
     @apply fixed left-10 bottom-10 flex items-center gap-4 z-20;
 }
-
-.paper {
-    @apply relative;
-}
-
-.error {
-    @apply text-[12px] absolute bottom-[-24px] left-0 text-red-500;
-}
