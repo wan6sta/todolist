@@ -17,3 +17,14 @@
 .error {
     @apply text-[12px] absolute bottom-[-18px] left-0 text-red-500;
 }
+
+.span {
+    text-align: center;
+    width: 200px;
+    overflow-x: hidden;
+}
+
+.span > span {
+    width: 200px;
+    white-space: nowrap;
+}

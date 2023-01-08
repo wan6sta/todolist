@@ -68,7 +68,9 @@ export const EditableSpan: FC<Props> = props => {
           <span className={cls.error}>{error}</span>
         </>
       ) : (
-        <span onDoubleClick={onDoubleClickHandler}>{inputValue}</span>
+        <div className={cls.span}>
+          <span onDoubleClick={onDoubleClickHandler}>{inputValue}</span>
+        </div>
       )}
     </div>
   )
