@@ -4,16 +4,18 @@ import { PageLoader } from 'widgets/PageLoader'
 import { ErrorAlert } from 'widgets/ErrorAlert'
 
 export const MainPage = () => {
-  const { data: todolists = [], isLoading, error } = useGetTodosQuery()
+  const { data = [], isLoading, error } = useGetTodosQuery()
+
+  const todolists = data.map(todo => (
+    <Todolist key={todo.id} todoId={todo.id} title={todo.title} />
+  ))
 
   return (
     <div className={cls.MainPage}>
       <PageLoader isLoading={isLoading} />
 
       <div className={cls.todolists}>
-        {todolists.map(todo => (
-          <Todolist key={todo.id} todoId={todo.id} title={todo.title} />
-        ))}
+        {todolists.length ? todolists : <h1>Add the first todolist</h1>}
       </div>
 
       <AddNewTodo />

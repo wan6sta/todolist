@@ -27,7 +27,13 @@ export const Todolist: FC<Props> = props => {
       <div className={cls.content}>
         <AddNewTask todoId={todoId} />
         <Paper className={cls.paper}>
-          <div className={cls.tasks}>{tasks}</div>
+          <div className={cls.tasks}>
+            {tasks?.length ? (
+              tasks
+            ) : (
+              <span className={cls.info}>Add the first task</span>
+            )}
+          </div>
           <FilterTask />
         </Paper>
       </div>

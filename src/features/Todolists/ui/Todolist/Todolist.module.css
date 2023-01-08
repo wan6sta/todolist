@@ -17,3 +17,7 @@
 .tasks {
     @apply w-[100%] flex flex-col flex-1 gap-3;
 }
+
+.info {
+    @apply text-center text-[16px] opacity-[0.8];
+}

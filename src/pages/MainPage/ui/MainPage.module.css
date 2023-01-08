@@ -5,3 +5,7 @@
 .todolists {
     @apply flex gap-10 flex-wrap w-[100%] justify-center;
 }
+
+.todolists > h1 {
+    @apply text-2xl opacity-[0.8];
+}
